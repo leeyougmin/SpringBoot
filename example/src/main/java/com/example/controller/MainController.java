@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 	
 	@GetMapping(value = {"/"})
-	public void index() {
+	public String index() {
 		System.out.println("성공");
+		return "main";
 	}
 }
