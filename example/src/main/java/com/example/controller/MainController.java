@@ -5,7 +5,7 @@ import java.util.HashMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.common.Url;
 
@@ -21,10 +21,9 @@ public class MainController {
 	}
 	
 	@PostMapping(value = {Url.POSTMAN.PARAM})
-	public String test(@RequestParam HashMap<String, Object> param) {
+	public void test(@RequestBody HashMap<String, Object> param) {
 		
-		System.out.println(param.get("param"));
+		System.out.println(param);
 		
-		return "123";
 	}
 }
