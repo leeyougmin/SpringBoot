@@ -12,9 +12,9 @@
 <body>
     <div class="wrap">
         <header>
-            <div class="header_wrap">
+            <!-- <div class="header_wrap">
                 <h1><a href="/">MINIDRAGON</a></h1>
-            </div>
+            </div> -->
         </header>
         <section>
             <nav>
@@ -40,6 +40,18 @@
                     <li><a href="https://github.com/leeyougmin" target="_blank"><i class="fa fa-github-alt" aria-hidden="true"></i> GitHub</a></li>
                 </ul>
             </nav>
+            <div class="board_list">
+                <div class="board" style="background-color: #FF6663;">
+                    <div class="board_header">
+                        <h4>Spring</h4>
+                    </div>
+                </div>
+                <div class="board" style="background-color: #FEB144;"></div>
+                <div class="board" style="background-color: #FDFD97;"></div>
+                <div class="board" style="background-color: #9EE09E;"></div>
+                <div class="board" style="background-color: #9EC1CF;"></div>
+                <div class="board" style="background-color: #CC99C9;"></div>
+            </div>
         </section>
         <footer></footer>
     </div>
