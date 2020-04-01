@@ -15,8 +15,6 @@ public class MainController {
 	@GetMapping(value = {Url.MAIN.MAIN})
 	public String index() {
 		
-		System.out.println("성공");
-		
 		return "main";
 	}
 	
