@@ -1,20 +1,29 @@
 * {margin: 0;padding: 0;box-sizing: border-box;font-family: 'Nanum Gothic', sans-serif;}
 body {background: #eeeeee;}
-a {text-decoration: none;color: #000;}
+a {text-decoration: none;color: #555;}
 ul, li {list-style: none;}
+table, tr, td, th {border-collapse: collapse;}
 #wrap {width: 100%;height: auto;}
 
 header {width: 100%;height: 70px;line-height: 70px;background: #222;}
 header .header_wrap {width: 80%;margin: 0 auto;text-align: center;}
-header .header_wrap h1 a {font-weight: 300;color: #ffffff;}
+header .header_wrap h1 a {font-weight: 300;letter-spacing: 5px;color: #ffffff;}
 
 section {width: 80%;margin: 10px auto;display: flex;}
-section nav {width: 15%;min-width: 180px;background: #ffffff;}
-section nav > ul > li {height: 50px;line-height: 50px;padding: 0 20px;}
-section nav > ul > li a {font-weight: 300;color: #555;}
-section nav > ul > li a:hover {color: #000;}
-section nav > ul > li > ul {height: 0;overflow: hidden;}
-section nav > ul > li:hover > ul {height: auto;}
-section nav > ul > li:hover > ul > li {padding: 0 15px;}
+section nav {width: 15%;min-width: 180px;position: relative;background: #ffffff;}
+section nav > ul li {height: 50px;position: relative;line-height: 50px;padding: 0 20px;}
+section nav > ul > li a {display: block;font-weight: 300;color: #555;}
+section nav > ul > li a:hover {display: block;color: #000;}
+section nav > ul > li > ul {max-height: 0;overflow: hidden;}
+section nav > ul > li:hover > ul {max-height: 500px;transition: 0.3s ease-in;}
 
-section .board_list {width: 100%;display: grid;grid-gap: 10px;grid-template-rows: repeat(2, 300px);grid-template-columns: repeat(3, 1fr);}
+section .board_list {width: 100%;margin-left: 10px;display: grid;grid-gap: 10px;grid-template-rows: repeat(2, 300px);grid-template-columns: repeat(3, 1fr);}
+section .board_list .board_box {position: relative;}
+section .board_list .board_box .board_header{height: 35px;border-radius: 5px;box-shadow: 0 4px 10px rgba(0,0,0,0.25), 0 3px 10px rgba(0,0,0,0.22);}
+section .board_list .board_box .board_header h4 {color: #fff;letter-spacing: 1px;;line-height: 35px;padding: 0 0 0 10px;}
+section .board_list .board_box .board_content {width: 93%;position: absolute;right: 5px;border-radius: 0 0 8px 8px;background: #fff;color: #555;z-index: -1;box-shadow: 6px 4px 38px rgba(0,0,0,0.30), 6px 3px 28px rgba(0,0,0,0.22);}
+section .board_list .board_box .board_content table {width: 100%;}
+section .board_list .board_box .board_content table tr {height: 53px;}
+section .board_list .board_box .board_content table tr td {max-width: 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+section .board_list .board_box .board_content table tr td.title {padding: 0 0 0 10px;}
+section .board_list .board_box .board_content table tr td.date {text-align: center;}

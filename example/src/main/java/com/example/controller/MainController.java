@@ -15,7 +15,7 @@ public class MainController {
 	@GetMapping(value = {Url.MAIN.MAIN})
 	public String index() {
 		
-		return "main";
+		return Url.MAIN.MAIN_JSP;
 	}
 	
 	@PostMapping(value = {Url.POSTMAN.PARAM})
