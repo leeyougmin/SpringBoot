@@ -7,12 +7,15 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.common.Url;
+import com.example.handler.LoginFailureHandler;
+import com.example.handler.LoginSuccesHandler;
 import com.example.service.CustomUserDetailsService;
 
 @Configuration
@@ -22,6 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /** The custom user details service. */
 	@Autowired 
     private CustomUserDetailsService customUserDetailsService;
+    @Autowired 
+    private LoginSuccesHandler loginSuccesHandler;
+    @Autowired 
+    private LoginFailureHandler loginFailureHandler;
 
 	@Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
@@ -38,8 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .formLogin()
             .loginPage( Url.AUTH.LOGIN_JSP )
             .loginProcessingUrl( Url.AUTH.PROC )
-            .successHandler(null)
-            .failureHandler(null)
+            .successHandler( loginSuccesHandler )
+            .failureHandler( loginFailureHandler )
             .usernameParameter("id")
             .passwordParameter("pw")
         .and()
@@ -57,6 +64,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         ;
     }
     
+    @Override
+	public void configure(WebSecurity web) throws Exception {
+		web
+            .ignoring()
+            .antMatchers( Constants.STATIC_RESOURCES_URL_PATTERNS )
+        ;
+		super.configure(web);
+	}
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

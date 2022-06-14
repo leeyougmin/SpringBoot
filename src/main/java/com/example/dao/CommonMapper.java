@@ -5,8 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import com.example.entity.UserInfo;
 
 @Mapper
-public interface UserMapper {
+public interface CommonMapper {
 
-    UserInfo getUserById(String username);
+    void setLogInAccesLog(UserInfo userInfo) throws Exception;
 
 }

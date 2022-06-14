@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import lombok.Data;
 
 @Data
-public class UserInfo implements UserDetails {
+public class UserInfo extends CommonInfo implements UserDetails {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
